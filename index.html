@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>શ્રી ગણેશ ટેન્ટ હાઉસ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;600;700;900&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --saffron: #FF6B00;
+    --deep-red: #C0392B;
+    --gold: #D4A017;
+    --gold-light: #F5C842;
+    --cream: #FFF8ED;
+    --dark: #1A0A00;
+    --text: #3D1A00;
+    --muted: #8B5E3C;
+    --green: #2E7D32;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'Noto Sans Gujarati', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* DECORATIVE BORDER PATTERN */
+  .border-pattern {
+    height: 12px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--saffron) 0px, var(--saffron) 20px,
+      var(--gold) 20px, var(--gold) 40px,
+      var(--deep-red) 40px, var(--deep-red) 60px,
+      var(--gold) 60px, var(--gold) 80px
+    );
+  }
+
+  /* NAV */
+  nav {
+    background: var(--dark);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 3px 20px rgba(0,0,0,0.4);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .nav-logo .ganesh-icon {
+    font-size: 2rem;
+    line-height: 1;
+  }
+  .nav-logo-text {
+    display: flex; flex-direction: column;
+    line-height: 1.2;
+  }
+  .nav-logo-text span:first-child {
+    font-size: 0.6rem;
+    color: var(--gold-light);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .nav-logo-text span:last-child {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .nav-cta {
+    background: var(--saffron);
+    color: #fff;
+    padding: 0.55rem 1.2rem;
+    font-family: 'Noto Sans Gujarati', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--deep-red); }
+
+  /* HERO */
+  #hero {
+    background: linear-gradient(135deg, #1A0A00 0%, #3D1200 50%, #1A0A00 100%);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-mandala {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    border: 1px solid rgba(212,160,23,0.1);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin 40s linear infinite;
+  }
+  .hero-mandala::before {
+    content: '';
+    position: absolute; inset: 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(212,160,23,0.08);
+  }
+  .hero-mandala::after {
+    content: '';
+    position: absolute; inset: 60px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,107,0,0.07);
+  }
+  @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+  .hero-om {
+    font-size: 3.5rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+    animation: fadeDown 0.8s ease forwards;
+    position: relative; z-index: 2;
+  }
+  .hero-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    opacity: 0; animation: fadeDown 0.8s 0.2s ease forwards;
+    position: relative; z-index: 2;
+  }
+  .hero-title {
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    opacity: 0; animation: fadeDown 0.8s 0.35s ease forwards;
+    position: relative; z-index: 2;
+  }
+  .hero-title span { color: var(--gold-light); }
+  .hero-tagline {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 2.5rem;
+    opacity: 0; animation: fadeDown 0.8s 0.5s ease forwards;
+    position: relative; z-index: 2;
+  }
+  .hero-buttons {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    opacity: 0; animation: fadeDown 0.8s 0.65s ease forwards;
+    position: relative; z-index: 2;
+  }
+  .btn-primary {
+    background: var(--saffron);
+    color: #fff;
+    padding: 0.9rem 2rem;
+    font-family: 'Noto Sans Gujarati', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-primary:hover { background: #e55a00; transform: translateY(-2px); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--gold-light);
+    border: 1px solid var(--gold);
+    padding: 0.9rem 2rem;
+    font-family: 'Noto Sans Gujarati', sans-serif;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { background: rgba(212,160,23,0.1); }
+
+  /* DIVIDER */
+  .divider {
+    text-align: center;
+    padding: 1.5rem 0 0.5rem;
+    font-size: 1.5rem;
+    color: var(--gold);
+    letter-spacing: 0.5em;
+  }
+
+  /* SECTION */
+  section { padding: 4rem 2rem; }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-badge {
+    display: inline-block;
+    background: var(--saffron);
+    color: #fff;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .section-title span { color: var(--saffron); }
+  .section-line {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, var(--saffron), var(--gold));
+    margin: 0.8rem auto 0;
+    border-radius: 2px;
+  }
+
+  /* SERVICES */
+  #services { background: #fff; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .service-card {
+    background: var(--cream);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--saffron), var(--gold));
+  }
+  .service-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(255,107,0,0.15);
+  }
+  .service-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+  .service-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.4rem;
+  }
+  .service-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+  /* WHY US */
+  #why { background: linear-gradient(135deg, #FFF3E0, #FFF8ED); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .why-item { text-align: center; }
+  .why-num {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--saffron);
+    line-height: 1;
+  }
+  .why-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+    line-height: 1.5;
+  }
+
+  /* CONTACT */
+  #contact { background: var(--dark); color: #fff; text-align: center; }
+  #contact .section-title { color: #fff; }
+  #contact .section-title span { color: var(--gold-light); }
+  .contact-tagline {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.9rem;
+    margin-bottom: 2.5rem;
+  }
+  .contact-cards {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+  .contact-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(212,160,23,0.2);
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    min-width: 200px;
+  }
+  .contact-card-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+  .contact-card-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .contact-card-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .whatsapp-btn {
+    display: inline-flex; align-items: center; gap: 0.7rem;
+    background: #25D366;
+    color: #fff;
+    padding: 1rem 2.5rem;
+    font-family: 'Noto Sans Gujarati', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+  }
+  .whatsapp-btn:hover { background: #1ebe5d; transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    background: #0D0500;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+  }
+  footer span { color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 600px) {
+    nav { padding: 0.8rem 1rem; }
+    section { padding: 3rem 1rem; }
+    .hero-buttons { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="border-pattern"></div>
+
+<nav>
+  <div class="nav-logo">
+    <span class="ganesh-icon">🪔</span>
+    <div class="nav-logo-text">
+      <span>શ્રી ગણેશ</span>
+      <span>ટેન્ટ હાઉસ</span>
+    </div>
+  </div>
+  <a href="#contact" class="nav-cta">📞 સંપર્ક કરો</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-mandala"></div>
+  <div class="hero-om">ॐ</div>
+  <p class="hero-subtitle">આપણા ગૌરવ સાથે — આપણી પ્રસંગ સજાવટ</p>
+  <h1 class="hero-title">શ્રી ગણેશ<br><span>ટેન્ટ હાઉસ</span></h1>
+  <p class="hero-tagline">લગ્ન • સગાઈ • જન્મદિવસ • ધાર્મિક કાર્યક્રમ</p>
+  <p style="color: var(--gold-light); font-size:1.1rem; margin-bottom:1.5rem; opacity:0; animation: fadeDown 0.8s 0.6s ease forwards; position:relative; z-index:2; font-style:italic;">"દરેક ખુશીમાં, અમે તમારી સાથે!"</p>
+  <div class="hero-buttons">
+    <a href="https://wa.me/919979799519" class="btn-primary">💬 WhatsApp કરો</a>
+    <a href="#services" class="btn-secondary">અમારી સેવાઓ જુઓ</a>
+  </div>
+</section>
+
+<div class="border-pattern"></div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header reveal">
+    <span class="section-badge">અમારી સેવાઓ</span>
+    <h2 class="section-title">દરેક <span>પ્રસંગ</span> માટે</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">⛺</div>
+      <div class="service-name">ટેન્ટ સજાવટ</div>
+      <div class="service-desc">મોટા અને નાના ટેન્ટ, સુંદર રંગોથી સજાવેલ</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🪑</div>
+      <div class="service-name">ખુરશી & ટેબલ</div>
+      <div class="service-desc">ફોલ્ડિંગ ખુરશી, ટેબલ, સ્ટેજ ભાડે</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">💡</div>
+      <div class="service-name">લાઈટિંગ</div>
+      <div class="service-desc">LED લાઈટ, ઝૂમ્મર, ફૂલ ડેકોરેશન</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🌸</div>
+      <div class="service-name">ફૂલ સજાવટ</div>
+      <div class="service-desc">ગુલાબ, ગેંદા, ઓર્કિડ ફ્લાવર ડેકોર</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🎊</div>
+      <div class="service-name">સ્ટેજ ડેકોર</div>
+      <div class="service-desc">શાહી સ્ટેજ, બ્રાઈડ-ગ્રૂમ સ્પેશ્યલ</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🔊</div>
+      <div class="service-name">સાઉન્ડ સિસ્ટમ</div>
+      <div class="service-desc">DJ, સ્પીકર, માઈક્રોફોન ભાડે</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-header reveal">
+    <span class="section-badge">અમારો અનુભવ</span>
+    <h2 class="section-title">શા માટે <span>અમને</span> પસંદ કરો?</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="why-grid">
+    <div class="why-item reveal">
+      <div class="why-num">10+</div>
+      <div class="why-label">વર્ષોનો અનુભવ</div>
+    </div>
+    <div class="why-item reveal">
+      <div class="why-num">500+</div>
+      <div class="why-label">સફળ કાર્યક્રમો</div>
+    </div>
+    <div class="why-item reveal">
+      <div class="why-num">24/7</div>
+      <div class="why-label">સેવા ઉપલબ્ધ</div>
+    </div>
+    <div class="why-item reveal">
+      <div class="why-num">100%</div>
+      <div class="why-label">ગ્રાહક સંતોષ</div>
+    </div>
+  </div>
+</section>
+
+<div class="border-pattern"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header reveal">
+    <span class="section-badge">સંપર્ક</span>
+    <h2 class="section-title">આજે જ <span>બુકિંગ</span> કરો</h2>
+    <div class="section-line"></div>
+  </div>
+  <p class="contact-tagline reveal">દરેક ખુશીમાં, અમે તમારી સાથે!</p>
+  <div class="contact-cards">
+    <div class="contact-card reveal">
+      <div class="contact-card-icon">👤</div>
+      <div class="contact-card-label">માલિક</div>
+      <div class="contact-card-value">અમળિયાર જયેશભાઈ બાબુભાઈ</div>
+    </div>
+    <div class="contact-card reveal">
+      <div class="contact-card-icon">📞</div>
+      <div class="contact-card-label">ફોન નંબર</div>
+      <div class="contact-card-value">+91 99797 99519</div>
+      <div class="contact-card-value" style="font-size:0.95rem; margin-top:0.3rem; color: var(--gold-light);">+91 63513 82829</div>
+    </div>
+    <div class="contact-card reveal">
+      <div class="contact-card-icon">📍</div>
+      <div class="contact-card-label">સ્થળ</div>
+      <div class="contact-card-value">સાપોઈ, દાહોદ, ગુજરાત</div>
+    </div>
+  </div>
+
+  <a href="https://wa.me/919979799519" class="whatsapp-btn reveal">
+    <span>💬</span>
+    <span>WhatsApp પર સંપર્ક કરો</span>
+  </a>
+</section>
+
+<footer>
+  <p>© 2026 <span>શ્રી ગણેશ ટેન્ટ હાઉસ</span> · સાપોઈ, દાહોદ · બધા હક્કો સુરક્ષિત</p>
+</footer>
+<div class="border-pattern"></div>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting)
+        setTimeout(() => e.target.classList.add('visible'), i * 100);
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
